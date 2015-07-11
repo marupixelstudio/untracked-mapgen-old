@@ -1,0 +1,33 @@
+<Map background-color="steelblue" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <Style name="contours10">
+            <Rule>
+              <LineSymbolizer stroke="#ffffff" stroke-width="2.7" />
+            </Rule>
+        </Style>
+        <Style name="contours50">
+            <Rule>
+              <LineSymbolizer stroke="#ff0000" stroke-width="1.7" />
+            </Rule>
+        </Style>
+        <Style name="contours100">
+            <Rule>
+              <LineSymbolizer stroke="#00ff00" stroke-width="0.7" />
+            </Rule>
+        </Style>
+
+
+        <Layer name="srtm100" status="on" srs="+proj=latlong +datum=WGS84">
+          <StyleName>contours100</StyleName>
+          <Datasource>
+              <Parameter name="type">postgis</Parameter>
+              <Parameter name="host"></Parameter>
+              <Parameter name="port"></Parameter>
+              <Parameter name="user"></Parameter>
+              <Parameter name="password"></Parameter>
+              <Parameter name="dbname">untracked</Parameter>
+              <Parameter name="estimate_extent">false</Parameter>
+              <Parameter name="table">(SELECT height, geometry FROM contours WHERE height::integer % 100 = 0) AS "contours-100"</Parameter>
+              <Parameter name="extent">-180,-89.99,180,89.99</Parameter>
+          </Datasource>
+        </Layer>
+</Map>

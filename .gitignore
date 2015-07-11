@@ -1,0 +1,6 @@
+tiles/**/*
+data/elevation/source/**/*
+data/elevation/processed/**/*
+styles/*.include
+mapgen
+node_modules/**/*
